@@ -1,375 +1,335 @@
 # 💳 Credit Card Fraud Detection System
 
-### Machine Learning-Based Fraud Detection with Imbalanced Data Handling
+### 🔐 Machine Learning-Based Fraud Detection with Imbalanced Data Handling
+
+> An end-to-end machine learning system designed to identify **fraudulent credit card transactions** from legitimate transactions using classification algorithms and techniques for handling highly imbalanced datasets.
 
 <p align="center">
-  <b>Detect • Analyze • Predict • Protect</b>
+  <img src="https://img.shields.io/badge/Python-3.x-blue?style=for-the-badge&logo=python" alt="Python">
+  <img src="https://img.shields.io/badge/Machine%20Learning-Scikit--Learn-orange?style=for-the-badge&logo=scikit-learn" alt="Machine Learning">
+  <img src="https://img.shields.io/badge/Streamlit-App-red?style=for-the-badge&logo=streamlit" alt="Streamlit">
+  <img src="https://img.shields.io/badge/FastAPI-Backend-009688?style=for-the-badge&logo=fastapi" alt="FastAPI">
+  <img src="https://img.shields.io/badge/Status-Completed-success?style=for-the-badge" alt="Status">
 </p>
 
-<p align="center">
-  An end-to-end machine learning project for identifying fraudulent credit card transactions using classification algorithms and techniques for handling highly imbalanced datasets.
-</p>
+---
+
+## 📌 Overview
+
+Credit card fraud is a major challenge in digital payment systems because fraudulent transactions typically represent only a **small fraction of all transactions**.
+
+This project uses **Machine Learning classification techniques** to distinguish between:
+
+* 🟢 **Genuine Transactions**
+* 🔴 **Fraudulent Transactions**
+
+The system focuses particularly on the **class imbalance problem**, where legitimate transactions significantly outnumber fraudulent transactions.
+
+The project includes data preprocessing, imbalance handling, model training, evaluation, and a user-friendly prediction interface.
 
 ---
 
-## 🚀 Project Overview
+## 🎯 Objectives
 
-The **Credit Card Fraud Detection System** is a machine learning-based application designed to classify credit card transactions as **Genuine** or **Fraudulent**.
-
-Credit card fraud datasets are highly imbalanced because fraudulent transactions usually represent only a small fraction of all transactions. This project addresses that challenge through appropriate **data preprocessing and imbalance-handling techniques**, followed by machine learning classification.
-
-The system provides a user-friendly interface through **Streamlit**, allowing users to provide transaction information and obtain a fraud prediction.
-
----
-
-## 🎯 Key Objectives
-
-* 🔍 Detect potentially fraudulent credit card transactions
-* 🤖 Apply machine learning for binary classification
-* ⚖️ Handle highly imbalanced transaction data
-* 🧹 Perform data preprocessing and feature preparation
-* 🌲 Train classification models such as Random Forest
-* 📈 Evaluate model performance using appropriate classification metrics
-* 🖥️ Provide an interactive Streamlit interface
-* 💾 Save and reuse trained machine learning models
-* 📊 Present prediction results in an understandable format
+* Detect fraudulent credit card transactions automatically.
+* Classify transactions as **Genuine** or **Fraudulent**.
+* Handle highly imbalanced transaction data.
+* Apply suitable data preprocessing techniques.
+* Train and compare machine learning classification models.
+* Evaluate models using meaningful classification metrics.
+* Provide an easy-to-use interface for fraud prediction.
+* Create a foundation that can be extended toward real-time fraud monitoring.
 
 ---
 
-## ✨ Features
+## 🧠 Machine Learning Approach
 
-| Feature                 | Description                                             |
-| ----------------------- | ------------------------------------------------------- |
-| 🔐 Fraud Detection      | Classifies transactions as Genuine or Fraudulent        |
-| 🤖 Machine Learning     | Uses supervised classification algorithms               |
-| ⚖️ Imbalance Handling   | Supports techniques such as SMOTE and class weighting   |
-| 📊 Model Evaluation     | Precision, Recall, F1-Score, Accuracy and other metrics |
-| 🌐 Streamlit UI         | Interactive web-based prediction interface              |
-| 💾 Saved Models         | Trained models can be reused without retraining         |
-| 📈 Visualization        | Helps analyze model and transaction behavior            |
-| 🧩 Modular Architecture | Separates frontend, backend and ML components           |
-
----
-
-# 🏗️ System Architecture
+The project follows an end-to-end ML pipeline:
 
 ```text
-                   ┌─────────────────────┐
-                   │      User Input     │
-                   └──────────┬──────────┘
-                              │
-                              ▼
-                   ┌─────────────────────┐
-                   │   Streamlit UI      │
-                   └──────────┬──────────┘
-                              │
-                              ▼
-                   ┌─────────────────────┐
-                   │ Data Preprocessing  │
-                   │ & Feature Handling  │
-                   └──────────┬──────────┘
-                              │
-                              ▼
-                   ┌─────────────────────┐
-                   │ Trained ML Model    │
-                   │ Random Forest / LR  │
-                   └──────────┬──────────┘
-                              │
-                              ▼
-                 ┌──────────────────────────┐
-                 │     Prediction Result    │
-                 │                          │
-                 │  🟢 Genuine Transaction  │
-                 │          OR              │
-                 │  🔴 Fraudulent           │
-                 └──────────────────────────┘
+📊 Transaction Dataset
+        ↓
+🧹 Data Preprocessing
+        ↓
+⚖️ Imbalanced Data Handling
+        ↓
+✂️ Train / Test Split
+        ↓
+🤖 Model Training
+        ↓
+📈 Model Evaluation
+        ↓
+💾 Model Serialization
+        ↓
+🌐 Streamlit Application
+        ↓
+🔍 Fraud / Genuine Prediction
 ```
 
 ---
 
-# 🔄 Machine Learning Workflow
+## ⚖️ Handling Class Imbalance
+
+One of the main challenges in credit card fraud detection is **class imbalance**.
+
+A typical fraud dataset contains a very large number of genuine transactions and a much smaller number of fraudulent transactions.
+
+Simply optimizing for accuracy can therefore produce misleading results.
+
+This project explores techniques such as:
+
+### 🔹 SMOTE
+
+**Synthetic Minority Over-sampling Technique (SMOTE)** generates synthetic samples for the minority class to improve the model's ability to learn fraudulent transaction patterns.
+
+### 🔹 Class Weights
+
+Class-weighting techniques can assign greater importance to the minority fraud class during model training.
 
 ```text
-Dataset
-   │
-   ▼
-Data Exploration
-   │
-   ▼
-Data Cleaning
-   │
-   ▼
-Feature Preparation
-   │
-   ▼
-Train / Test Split
-   │
-   ▼
-Imbalanced Data Handling
-   │
-   ├── SMOTE
-   │
-   └── Class Weights
-   │
-   ▼
-Model Training
-   │
-   ├── Logistic Regression
-   │
-   └── Random Forest
-   │
-   ▼
-Model Evaluation
-   │
-   ▼
-Model Serialization
-   │
-   ▼
-Streamlit Application
-   │
-   ▼
-Fraud Prediction
+Highly Imbalanced Data
+          ↓
+   SMOTE / Class Weights
+          ↓
+Improved Minority-Class Learning
+          ↓
+Fraud Detection Model
 ```
 
 ---
 
-# 🧠 Machine Learning Models
+## 🤖 Machine Learning Models
 
-## 1. Logistic Regression
+### 1️⃣ Logistic Regression
 
-Logistic Regression is used as a classification model for predicting whether a transaction belongs to the genuine or fraudulent class.
+Logistic Regression is used as a classification approach for predicting whether a transaction belongs to the genuine or fraudulent class.
 
-### Advantages
+**Key characteristics:**
 
+* Binary classification
+* Probability-based prediction
 * Simple and interpretable
-* Efficient for binary classification
-* Provides probability-based predictions
 * Useful as a baseline model
 
----
-
-## 2. Random Forest 🌲
+### 2️⃣ Random Forest
 
 Random Forest is an ensemble learning algorithm that combines multiple decision trees to make predictions.
 
-### Advantages
+**Key characteristics:**
 
 * Handles nonlinear relationships
-* Robust against overfitting compared with individual decision trees
-* Can provide feature importance
-* Suitable for complex classification patterns
+* Robust classification performance
+* Supports feature importance analysis
+* Suitable for complex transaction patterns
 
 ---
 
-# ⚖️ Handling Class Imbalance
+## 📊 Model Evaluation
 
-Fraud detection datasets typically contain significantly more genuine transactions than fraudulent transactions.
+Because fraud detection is an imbalanced classification problem, multiple evaluation metrics are considered.
 
-For example:
+| Metric              | Purpose                                           |
+| ------------------- | ------------------------------------------------- |
+| 🎯 Accuracy         | Overall percentage of correct predictions         |
+| 🔎 Precision        | How many predicted fraud cases are actually fraud |
+| 🚨 Recall           | How many actual fraud cases are detected          |
+| ⚖️ F1-Score         | Balance between precision and recall              |
+| 📈 ROC-AUC          | Measures classification discrimination            |
+| 🧮 Confusion Matrix | Shows TP, TN, FP and FN                           |
+
+> **Important:** Actual performance values should be taken from the final trained model rather than being hard-coded into the README.
+
+---
+
+## 🏗️ System Architecture
 
 ```text
-Genuine Transactions      ████████████████████████████████████████
-Fraudulent Transactions   █
+                    ┌─────────────────────┐
+                    │   Transaction Data  │
+                    └──────────┬──────────┘
+                               ↓
+                    ┌─────────────────────┐
+                    │ Data Preprocessing  │
+                    └──────────┬──────────┘
+                               ↓
+                    ┌─────────────────────┐
+                    │ Imbalance Handling  │
+                    │   SMOTE / Weights   │
+                    └──────────┬──────────┘
+                               ↓
+                    ┌─────────────────────┐
+                    │   ML Model Training │
+                    │ Logistic Regression │
+                    │    Random Forest    │
+                    └──────────┬──────────┘
+                               ↓
+                    ┌─────────────────────┐
+                    │  Model Evaluation   │
+                    └──────────┬──────────┘
+                               ↓
+                    ┌─────────────────────┐
+                    │   Saved ML Model    │
+                    └──────────┬──────────┘
+                               ↓
+                    ┌─────────────────────┐
+                    │ Streamlit Interface │
+                    └──────────┬──────────┘
+                               ↓
+                    ┌─────────────────────┐
+                    │ Fraud / Genuine     │
+                    │     Prediction      │
+                    └─────────────────────┘
 ```
 
-If imbalance is ignored, a model may achieve high overall accuracy while performing poorly on fraud cases.
+---
 
-This project therefore considers techniques such as:
+## 🧩 Project Modules
 
-### SMOTE
-
-**Synthetic Minority Over-sampling Technique (SMOTE)** creates synthetic examples of the minority class to improve its representation during training.
-
-### Class Weighting
-
-Class weights can assign greater importance to the minority fraud class during model training.
+| Module                | Description                            |
+| --------------------- | -------------------------------------- |
+| 📥 Data Collection    | Loads the transaction dataset          |
+| 🧹 Data Preprocessing | Cleans and prepares transaction data   |
+| ⚖️ Imbalance Handling | Applies SMOTE/class-weight techniques  |
+| 🤖 Model Training     | Trains classification algorithms       |
+| 📊 Model Evaluation   | Calculates classification metrics      |
+| 💾 Model Saving       | Stores trained model for inference     |
+| 🔍 Prediction         | Predicts fraud or genuine transactions |
+| 🖥️ Streamlit UI      | Provides an interactive interface      |
 
 ---
 
-# 📊 Model Evaluation
+## 🛠️ Technology Stack
 
-Fraud detection should not rely only on accuracy.
+### Programming
 
-The project evaluates classification performance using metrics such as:
+* 🐍 Python
 
-* **Accuracy**
-* **Precision**
-* **Recall**
-* **F1-Score**
-* **Confusion Matrix**
-* **ROC-AUC**, when implemented
+### Machine Learning
 
-### Evaluation Table
+* Scikit-learn
+* Logistic Regression
+* Random Forest
 
-| Model               | Accuracy | Precision | Recall | F1-Score | ROC-AUC |
-| ------------------- | -------: | --------: | -----: | -------: | ------: |
-| Logistic Regression |        — |         — |      — |        — |       — |
-| Random Forest       |        — |         — |      — |        — |       — |
+### Data Processing
 
-> Replace the `—` values with your actual experimental results before final submission.
+* Pandas
+* NumPy
+
+### Imbalanced Data
+
+* Imbalanced-learn
+* SMOTE
+* Class Weighting
+
+### Visualization
+
+* Matplotlib
+* Seaborn
+* Plotly *(if enabled in the current version)*
+
+### Application
+
+* Streamlit
+* FastAPI *(for the backend version)*
+
+### Development
+
+* Git
+* GitHub
+* VS Code
+* Jupyter Notebook
 
 ---
 
-# 🎨 Streamlit Application
-
-The project includes an interactive Streamlit interface for making fraud predictions.
-
-### Application Flow
+## 📁 Project Structure
 
 ```text
-Transaction Details
-        │
-        ▼
-   Input Features
-        │
-        ▼
-  Preprocessing
-        │
-        ▼
-   ML Prediction
-        │
-        ▼
- ┌───────────────────┐
- │ Genuine / Fraud   │
- └───────────────────┘
-```
-
-### 📸 Screenshots
-
-Add your actual project screenshots here:
-
-#### 🏠 Application Interface
-
-> 📷 `screenshots/home.png`
-
-#### 💳 Transaction Prediction
-
-> 📷 `screenshots/prediction.png`
-
-#### 📊 Results / Dashboard
-
-> 📷 `screenshots/results.png`
-
----
-
-# 🛠️ Technology Stack
-
-| Category            | Technologies                |
-| ------------------- | --------------------------- |
-| Language            | 🐍 Python                   |
-| Machine Learning    | Scikit-learn                |
-| Imbalanced Learning | imbalanced-learn / SMOTE    |
-| Data Processing     | Pandas, NumPy               |
-| Visualization       | Matplotlib, Seaborn, Plotly |
-| Web Interface       | Streamlit                   |
-| Model Storage       | Joblib / Pickle             |
-| Development         | VS Code / Jupyter Notebook  |
-| Version Control     | Git & GitHub                |
-
----
-
-# 📁 Project Structure
-
-```text
-fraud-detection-system/
+credit-card-fraud-detection-system/
 │
-├── backend/
-│   └── app.py
-│
-├── frontend/
+├── 📂 backend/
+│   ├── app.py
 │   └── ...
 │
-├── ml/
-│   ├── dataset/
-│   │   └── ...
-│   │
+├── 📂 frontend/
+│   └── ...
+│
+├── 📂 ml/
 │   ├── saved_models/
 │   │   └── ...
-│   │
+│   ├── train.py
 │   └── ...
 │
-├── streamlit_app/
+├── 📂 streamlit_app/
 │   ├── app.py
-│   ├── requirements.txt
 │   └── ...
 │
-├── screenshots/
-│   ├── home.png
-│   ├── prediction.png
-│   └── results.png
+├── 📂 data/
+│   └── ...
 │
-├── requirements.txt
-├── README.md
-└── .gitignore
+├── 📄 requirements.txt
+├── 📄 README.md
+└── 📄 .gitignore
 ```
 
-> Update the structure if your final repository contains different files or folders.
+> The exact files may vary depending on the version of the project uploaded to the repository.
 
 ---
 
-# ⚙️ Installation
+## 🚀 Installation & Setup
 
-## 1️⃣ Clone the Repository
+### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/SriHarish2006/fraud-detection-system.git
+git clone https://github.com/SriHarish2006/credit-card-fraud-detection-system.git
 ```
 
 ```bash
-cd fraud-detection-system
+cd credit-card-fraud-detection-system
 ```
 
-## 2️⃣ Create a Virtual Environment
-
-### Windows
+### 2. Create a Virtual Environment
 
 ```bash
 python -m venv venv
 ```
 
-Activate it:
+### 3. Activate the Environment
+
+**Windows:**
 
 ```bash
 venv\Scripts\activate
 ```
 
-### Linux / macOS
-
-```bash
-python3 -m venv venv
-```
+**macOS / Linux:**
 
 ```bash
 source venv/bin/activate
 ```
 
----
-
-## 3️⃣ Install Dependencies
+### 4. Install Dependencies
 
 ```bash
 python -m pip install -r requirements.txt
 ```
 
-If the Streamlit application has its own requirements file:
-
-```bash
-python -m pip install -r streamlit_app/requirements.txt
-```
-
 ---
 
-# ▶️ Running the Streamlit Application
+## ▶️ Run the Streamlit Application
 
-From the project root:
+Navigate to the Streamlit application directory if required:
 
 ```bash
-streamlit run streamlit_app/app.py
+cd streamlit_app
 ```
 
-Then open the local Streamlit URL displayed in the terminal.
+Run:
 
-Typically:
+```bash
+streamlit run app.py
+```
+
+The application will normally open at:
 
 ```text
 http://localhost:8501
@@ -377,146 +337,196 @@ http://localhost:8501
 
 ---
 
-# 🔬 Example Prediction
+## 🔌 Run the FastAPI Backend
 
-### Input
+If using the backend version:
 
-```text
-Transaction Features
-        ↓
-Feature Preprocessing
-        ↓
-Trained Random Forest Model
+```bash
+python -m uvicorn backend.app:app --reload --port 8000
 ```
 
-### Output
+Backend:
 
 ```text
-┌──────────────────────────────┐
-│     🔴 FRAUDULENT            │
-│                              │
-│ Potential fraudulent         │
-│ transaction detected.        │
-└──────────────────────────────┘
+http://localhost:8000
+```
+
+API documentation:
+
+```text
+http://localhost:8000/docs
+```
+
+---
+
+## 🖥️ Application Features
+
+### 🏠 Interactive Dashboard
+
+The Streamlit interface provides a simple way to interact with the fraud detection model.
+
+### 💳 Transaction Prediction
+
+Users can provide transaction information and request a prediction.
+
+### 🚨 Fraud Detection
+
+The model produces a classification indicating whether the transaction is predicted to be:
+
+```text
+🔴 FRAUDULENT
 ```
 
 or
 
 ```text
-┌──────────────────────────────┐
-│     🟢 GENUINE               │
-│                              │
-│ Transaction classified as    │
-│ genuine.                     │
-└──────────────────────────────┘
+🟢 GENUINE
+```
+
+### 📊 Model-Based Analysis
+
+The system can be extended with:
+
+* Prediction probabilities
+* Confusion matrix
+* Performance metrics
+* Feature analysis
+* Transaction visualizations
+
+---
+
+## 📸 Screenshots
+
+### 🏠 Home Page
+
+> Add your Streamlit home-page screenshot here.
+
+```text
+[ INSERT HOME PAGE SCREENSHOT ]
+```
+
+### 🔍 Fraud Prediction
+
+> Add your fraud-prediction screenshot here.
+
+```text
+[ INSERT FRAUD PREDICTION SCREENSHOT ]
+```
+
+### 🟢 Genuine Transaction
+
+> Add your genuine-transaction screenshot here.
+
+```text
+[ INSERT GENUINE TRANSACTION SCREENSHOT ]
+```
+
+### 📊 Model Performance
+
+> Add your model evaluation screenshot here.
+
+```text
+[ INSERT MODEL PERFORMANCE SCREENSHOT ]
 ```
 
 ---
 
-# 📌 Important Considerations
+## 🔐 Security & Practical Considerations
 
-A machine learning prediction is not a guarantee that a transaction is actually fraudulent.
+This project is intended for **educational and demonstration purposes**.
 
-Real-world financial fraud detection systems require additional components such as:
+A production banking system would additionally require:
 
-* Real-time transaction monitoring
-* Secure financial infrastructure
-* Authentication and authorization
-* Data privacy controls
+* Secure API authentication
+* Encrypted communication
+* Secure database infrastructure
+* Transaction monitoring
+* Model drift monitoring
 * Fraud investigation workflows
-* Continuous model monitoring
-* Model retraining
-* Production-grade APIs
-
-This project is intended as an **academic and machine learning demonstration**.
+* Access control
+* Logging and auditing
+* Continuous model validation
 
 ---
 
-# 🌟 Advantages
+## ⚠️ Limitations
 
-* Automated transaction classification
-* Machine learning-based detection
-* Addresses class imbalance
-* Interactive prediction interface
-* Modular project structure
-* Reusable trained models
-* Suitable for experimentation and academic learning
-* Can be extended toward real-time fraud monitoring
+* Model performance depends on the quality and representativeness of the training data.
+* Fraud patterns can change over time.
+* False positives and false negatives are possible.
+* A model trained on historical data may not detect previously unseen fraud patterns.
+* Production deployment requires additional security and infrastructure.
 
 ---
 
-# 🔮 Future Enhancements
-
-Future versions can include:
+## 🔮 Future Enhancements
 
 * ⚡ Real-time transaction monitoring
 * 🧠 XGBoost / LightGBM models
-* 🤖 Deep learning approaches
-* 🔎 Explainable AI using SHAP
-* 🔐 User authentication
+* 🤖 Deep learning-based fraud detection
+* 🔍 Explainable AI using SHAP
+* 📡 Real-time fraud alerts
+* 📱 SMS / Email notifications
 * 🗄️ Database integration
-* 📧 Fraud alert notifications
-* 📱 Mobile-friendly interface
+* 🔐 Authentication and authorization
 * ☁️ Cloud deployment
-* 🔄 Automated model retraining
 * 📊 Advanced fraud analytics dashboard
-* 🔌 Production-ready REST API
+* 🔄 Continuous model retraining
+* 📈 Model drift detection
 
 ---
 
-# 💼 Real-World Applications
+## 💼 Real-World Applications
 
 The concept can be applied to:
 
 * 🏦 Banking systems
 * 💳 Credit card companies
 * 💰 FinTech platforms
-* 🛒 E-commerce payment systems
+* 🛒 E-commerce platforms
 * 📱 Digital wallets
 * 💻 Online payment gateways
-* 🏢 Financial institutions
+* 🏪 Digital financial services
 
 ---
 
-# 🎓 Project Information
+## 🎓 Project Information
 
-| Detail           | Information                        |
-| ---------------- | ---------------------------------- |
-| Project          | Credit Card Fraud Detection System |
-| Domain           | Machine Learning / Data Science    |
-| Problem Type     | Binary Classification              |
-| Main Challenge   | Highly Imbalanced Data             |
-| Primary Models   | Logistic Regression, Random Forest |
-| Interface        | Streamlit                          |
-| Language         | Python                             |
-| Project Category | Academic / Internship Project      |
+**Project:** Credit Card Fraud Detection System
+**Category:** Machine Learning / Data Science
+**Domain:** Financial Technology (FinTech)
+**Problem Type:** Binary Classification
+**Key Challenge:** Imbalanced Data
+**Primary Language:** Python
+**Interface:** Streamlit
+**Backend:** FastAPI *(where applicable)*
 
 ---
 
-# 👨‍💻 Author
+## 👨‍💻 Developer
 
 ### Sri Harish
 
 **B.E. Computer Science and Engineering**
 
-   Ph.No:+91-9489231147
+Interested in:
 
-🔗 LinkedIn: **[https://www.linkedin.com/in/sri-harish-2b34a930a/]**
+`Data Analytics` • `Machine Learning` • `Python` • `SQL` • `Power BI` • `Artificial Intelligence`
 
 ---
 
-# 📜 License
+## ⭐ Support
 
-This project is intended for **educational and academic purposes**.
+If you find this project useful, consider giving the repository a ⭐ on GitHub.
 
-Add an appropriate open-source license if you intend to distribute the project under one.
+---
+
+## 📄 License
+
+This project is intended primarily for **educational and academic purposes**. Add an appropriate open-source license if you plan to distribute the project for reuse.
 
 ---
 
 <p align="center">
-
-### 💳 Detect Fraud. Analyze Transactions. Build Safer Payment Systems.
-
-⭐ **If you find this project useful, consider giving the repository a star!**
-
+  <b>💳 Detect Fraud. Protect Transactions. Build Smarter Financial Systems. 🔐</b>
 </p>
