@@ -1,221 +1,139 @@
-# 💳 Credit Card Fraud Detection System Using Machine Learning
+# 💳 Credit Card Fraud Detection System
 
-A complete, end-to-end Machine Learning project that detects fraudulent
-credit-card transactions and exposes the results through an interactive
-Streamlit web application.
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.x-blue?style=for-the-badge&logo=python" alt="Python">
+  <img src="https://img.shields.io/badge/Machine%20Learning-Scikit--Learn-orange?style=for-the-badge&logo=scikit-learn" alt="Machine Learning">
+  <img src="https://img.shields.io/badge/Streamlit-App-red?style=for-the-badge&logo=streamlit" alt="Streamlit">
+  <img src="https://img.shields.io/badge/Pandas-Data%20Analysis-150458?style=for-the-badge&logo=pandas" alt="Pandas">
+  <img src="https://img.shields.io/badge/Status-Completed-success?style=for-the-badge" alt="Status">
+</p>
 
-> ⚠️ **Educational project only.** This is a college minor project, not a
-> production banking fraud-prevention system. Never enter real credit-card
-> numbers or real customer data anywhere in this application.
+<p align="center">
+  <b>🚨 An intelligent machine-learning system for detecting fraudulent credit-card transactions.</b>
+</p>
 
 ---
 
-## Overview
+## 📌 Overview
 
-Credit-card fraud costs billions of dollars annually, and fraudulent
-transactions make up a tiny fraction of all transactions — which makes
-detecting them a genuinely hard *imbalanced classification* problem. This
-project builds, evaluates, and compares two Machine Learning models
-(Logistic Regression and Random Forest) to classify transactions as
-**Genuine** or **Fraudulent**, and wraps the result in a clean, explorable
-Streamlit dashboard.
+The **Credit Card Fraud Detection System** is a Machine Learning-based application designed to classify credit-card transactions as either **Genuine** or **Fraudulent**.
 
-## Problem Statement
+The project focuses on one of the major challenges in financial fraud detection: **highly imbalanced datasets**, where fraudulent transactions represent only a small percentage of total transactions.
 
-Given anonymised transaction features (`Time`, `V1`–`V28`, `Amount`),
-predict whether a transaction is fraudulent (`Class = 1`) or genuine
-(`Class = 0`), despite fraud representing well under 1% of all transactions
-in the dataset.
+To address this challenge, the system uses techniques such as **SMOTE** and **class-weighted learning**, along with classification algorithms including **Logistic Regression** and **Random Forest**.
 
-## Objectives
+A user-friendly **Streamlit dashboard** provides transaction predictions, fraud probabilities, analytics, and model performance metrics.
 
-- Build a clean, reproducible ML pipeline from raw CSV to a saved model.
-- Correctly handle severe class imbalance without leaking information
-  between train and test data.
-- Compare multiple models using metrics that actually matter for fraud
-  detection (not just accuracy).
-- Present results through an interactive, explainable web application.
+---
 
-## Features
+## 🎯 Objectives
 
-- Automatic dataset validation, cleaning, and quality reporting.
-- Exploratory Data Analysis with interactive Plotly charts.
-- Class-imbalance handling via **SMOTE** (train-only) and `class_weight="balanced"`.
-- Two trained models — Logistic Regression and Random Forest — with a
-  transparent, metric-driven model-selection rule.
-- Full evaluation suite: Accuracy, Precision, Recall, F1-score, ROC-AUC,
-  Confusion Matrix, ROC Curve, Precision-Recall Curve.
-- Feature importance visualization (Random Forest).
-- A 4-page Streamlit app: Dashboard, Fraud Prediction, Analytics, Model
-  Performance.
-- Graceful error handling throughout (missing files, bad input, etc.).
+- 🔍 Detect fraudulent credit-card transactions
+- ⚖️ Handle highly imbalanced transaction data
+- 🤖 Train multiple Machine Learning classification models
+- 📊 Compare model performance using appropriate evaluation metrics
+- 🚨 Predict whether a transaction is Genuine or Fraudulent
+- 📈 Display fraud probability
+- 📊 Provide interactive fraud analytics
+- 🖥️ Build an easy-to-use Streamlit web application
 
-## Technologies Used
+---
 
-| Category | Tools |
+## ✨ Key Features
+
+| Feature | Description |
 |---|---|
-| Language | Python 3.x |
-| Data processing | Pandas, NumPy |
-| Machine Learning | Scikit-learn, imbalanced-learn (SMOTE) |
-| Models | Logistic Regression, Random Forest |
-| Visualization | Plotly, Matplotlib |
-| Web app | Streamlit |
-| Model persistence | Joblib |
-| Development | Jupyter Notebook, VS Code |
-| Version control | Git, GitHub |
+| 🔍 Fraud Detection | Classifies transactions as Genuine or Fraudulent |
+| ⚖️ Imbalance Handling | Uses SMOTE and class-weighted learning |
+| 🤖 Multiple Models | Logistic Regression and Random Forest |
+| 📊 Model Evaluation | Accuracy, Precision, Recall, F1-Score & ROC-AUC |
+| 🚨 Probability Prediction | Displays predicted fraud probability |
+| 📈 Interactive Analytics | Visualize transaction and fraud statistics |
+| 🔥 Feature Importance | Identify influential transaction features |
+| 🧩 Confusion Matrix | Analyze classification errors |
+| 📱 Streamlit UI | Interactive web-based interface |
+| 💾 Model Persistence | Saves trained models using Joblib |
 
-## Dataset
+---
 
-The project expects the well-known **Credit Card Fraud Detection** dataset
-(anonymised European cardholder transactions, September 2013), placed at:
+# 🧠 Machine Learning Workflow
 
-```
-data/creditcard.csv
-```
+```text
+                 ┌─────────────────────┐
+                 │  Credit Card Data   │
+                 └──────────┬──────────┘
+                            │
+                            ▼
+                 ┌─────────────────────┐
+                 │ Data Preprocessing  │
+                 └──────────┬──────────┘
+                            │
+                            ▼
+                 ┌─────────────────────┐
+                 │ Exploratory Data    │
+                 │      Analysis       │
+                 └──────────┬──────────┘
+                            │
+                            ▼
+                 ┌─────────────────────┐
+                 │ Train/Test Split    │
+                 └──────────┬──────────┘
+                            │
+                            ▼
+                 ┌─────────────────────┐
+                 │ Class Imbalance     │
+                 │ Handling            │
+                 │ SMOTE / Class Weight│
+                 └──────────┬──────────┘
+                            │
+                 ┌──────────┴──────────┐
+                 ▼                     ▼
+        ┌─────────────────┐   ┌─────────────────┐
+        │    Logistic     │   │  Random Forest  │
+        │   Regression    │   │   Classifier    │
+        └────────┬────────┘   └────────┬────────┘
+                 │                     │
+                 └──────────┬──────────┘
+                            ▼
+                 ┌─────────────────────┐
+                 │ Model Evaluation    │
+                 └──────────┬──────────┘
+                            │
+                            ▼
+                 ┌─────────────────────┐
+                 │ Select Best Model   │
+                 └──────────┬──────────┘
+                            │
+                            ▼
+                 ┌─────────────────────┐
+                 │ Save Model + Scaler │
+                 └──────────┬──────────┘
+                            │
+                            ▼
+                 ┌─────────────────────┐
+                 │ Streamlit Web App   │
+                 └──────────┬──────────┘
+                            │
+                            ▼
+                 ┌─────────────────────┐
+                 │ Fraud / Genuine     │
+                 │ Prediction          │
+                 └─────────────────────┘
 
-Expected columns: `Time`, `V1`...`V28` (PCA-anonymised features), `Amount`,
-and the target column `Class` (`0` = genuine, `1` = fraud).
-
-The dataset used during development contains **284,807 transactions**, of
-which **492 (≈0.173%)** are fraudulent — a strongly imbalanced dataset,
-which is the central challenge this project addresses. All statistics
-shown in the app are computed dynamically from whatever CSV is placed in
-`data/` — nothing is hard-coded.
-
-## System Architecture
-
-```
-Dataset (CSV)
-      │
-      ▼
-Data Validation & Cleaning  (src/data_preprocessing.py)
-      │
-      ▼
-Exploratory Data Analysis   (src/eda.py, notebooks/)
-      │
-      ▼
-Train/Test Split (stratified) + Feature Scaling
-      │
-      ▼
-SMOTE (training data only)  (src/train_model.py)
-      │
-      ▼
-Model Training: Logistic Regression + Random Forest
-      │
-      ▼
-Evaluation & Model Comparison (src/evaluate_model.py)
-      │
-      ▼
-Best Model Selection → Save (Joblib)  (models/)
-      │
-      ▼
-Streamlit Web Application  (app/streamlit_app.py)
-```
-
-## Machine Learning Workflow
-
-1. **Load & validate** the dataset — check shape, columns, dtypes, missing
-   values, duplicates, and that `Class` only contains 0/1.
-2. **Clean** the dataset — impute any missing numeric values with the
-   median, drop duplicate rows.
-3. **Split** features/target, then **stratified train/test split** so the
-   rare fraud class is proportionally represented in both sets.
-4. **Scale** features with `StandardScaler`, fit on the training set only.
-5. **Balance** the training set with **SMOTE** (test set is left untouched,
-   at its real-world imbalanced distribution).
-6. **Train** Logistic Regression (`class_weight="balanced"`) and Random
-   Forest (`class_weight="balanced"`, 200 trees).
-7. **Evaluate** both models on the untouched, imbalanced test set.
-8. **Select** the best model by fraud-class F1-score (ROC-AUC as
-   tiebreaker) — not accuracy.
-9. **Save** the winning model + scaler + feature order with Joblib.
-10. **Serve** predictions through Streamlit, loading the saved model
-    instead of retraining on every page load.
-
-## Data Preprocessing
-
-See `src/data_preprocessing.py`. Key points:
-
-- Missing target rows are dropped; missing feature values are median-imputed.
-- Duplicate rows are removed (the raw dataset commonly contains ~1,000+
-  exact duplicate rows).
-- `StandardScaler` is fit **only** on the training split and then applied
-  to both train and test, to avoid leaking test-set statistics into
-  training.
-
-## Imbalanced Data Handling
-
-Fraud is rare — in this dataset, roughly 1 in 578 transactions. A naive
-model can score >99% accuracy by predicting "genuine" every time, while
-being completely useless at catching fraud. Two complementary techniques
-are used:
-
-1. **`class_weight="balanced"`** on both models, so misclassifying a fraud
-   case is penalized more heavily during training.
-2. **SMOTE (Synthetic Minority Over-sampling Technique)**, applied to the
-   training data only, which synthesizes new, plausible fraud examples by
-   interpolating between existing minority-class neighbors.
-
-### SMOTE Explanation
-
-SMOTE does **not** duplicate existing fraud rows. For each minority-class
-(fraud) sample, it finds its nearest minority-class neighbors in feature
-space and creates new synthetic samples along the line segments connecting
-them. This gives the model more varied fraud examples to learn from,
-without simply copy-pasting the same handful of cases.
-
-**Critically, SMOTE is applied only to the training data, after the
-train/test split** — never before. Applying it before splitting would let
-synthetic near-duplicates of the same original fraud case end up in both
-the training and test sets, artificially inflating test performance (a
-form of **data leakage**). The test set always keeps the real, original
-class distribution so evaluation reflects real-world conditions.
-
-## Machine Learning Models
-
-**Logistic Regression** — a simple, fast, interpretable linear baseline.
-Good at showing whether a linear decision boundary can separate the
-classes at all.
-
-**Random Forest Classifier** — an ensemble of decision trees that can
-capture non-linear relationships between the anonymised `V1`–`V28`
-features, generally the stronger performer on this kind of tabular data,
-and provides feature-importance scores "for free."
-
-## Evaluation Metrics
-
-Accuracy alone is misleading here — with fraud at ~0.17% of transactions,
-a model predicting "genuine" for everything scores ~99.8% accuracy while
-catching **zero** fraud. This project reports and prioritizes:
-
-- **Precision** — of the transactions flagged as fraud, how many actually were?
-- **Recall** — of the actual fraud cases, how many did the model catch?
-- **F1-score** — harmonic mean of precision and recall.
-- **ROC-AUC** — overall ability to rank fraud above genuine transactions.
-- **Confusion Matrix**, **ROC Curve**, **Precision-Recall Curve** for a
-  fuller picture.
-
-The best model is selected primarily by **fraud-class F1-score**, with
-ROC-AUC as a tiebreaker — never by raw accuracy.
-
-## Project Structure
-
-```
+📂 Project Structure
 credit-card-fraud-detection/
 │
-├── data/
+├── 📁 data/
 │   └── creditcard.csv
 │
-├── models/
-│   ├── fraud_detection_model.pkl   # best model (Joblib)
-│   ├── scaler.pkl                  # fitted StandardScaler
-│   ├── metadata.pkl                # feature order + best model name
-│   └── all_models.pkl              # every trained model, for comparison
+├── 📁 models/
+│   ├── fraud_detection_model.pkl
+│   └── scaler.pkl
 │
-├── notebooks/
+├── 📁 notebooks/
 │   └── fraud_detection_analysis.ipynb
 │
-├── src/
+├── 📁 src/
 │   ├── __init__.py
 │   ├── data_preprocessing.py
 │   ├── eda.py
@@ -223,124 +141,359 @@ credit-card-fraud-detection/
 │   ├── evaluate_model.py
 │   └── prediction.py
 │
-├── app/
+├── 📁 app/
 │   ├── __init__.py
 │   └── streamlit_app.py
 │
-├── outputs/
+├── 📁 outputs/
 │   ├── figures/
 │   └── reports/
-│       └── training_report.json    # generated after training
 │
-├── requirements.txt
-├── README.md
-├── .gitignore
-└── LICENSE
-```
+├── 📄 requirements.txt
+├── 📄 README.md
+├── 📄 .gitignore
+└── 📄 LICENSE
+🛠️ Tech Stack
+Programming Language
 
-## Installation
+🐍 Python
 
-```bash
-git clone <repository-url>
+Data Processing
+Pandas
+NumPy
+Machine Learning
+Scikit-learn
+imbalanced-learn
+Logistic Regression
+Random Forest
+Data Visualization
+Matplotlib
+Plotly
+Web Application
+Streamlit
+Model Persistence
+Joblib
+Development Tools
+Jupyter Notebook
+VS Code
+Git & GitHub
+📊 Dataset
+
+The project is designed for the commonly used Credit Card Fraud Detection dataset.
+
+Dataset Features
+Time
+V1
+V2
+V3
+...
+V28
+Amount
+Class
+Target Variable
+Class = 0 → Genuine Transaction
+Class = 1 → Fraudulent Transaction
+
+The dataset contains a strong class imbalance, making it suitable for demonstrating fraud-detection techniques.
+
+⚠️ The project should be used with anonymized/educational transaction data. Never enter real credit-card numbers or sensitive financial information.
+
+⚖️ Handling Class Imbalance
+
+One of the main challenges in this project is class imbalance.
+
+A typical fraud dataset contains significantly more genuine transactions than fraudulent transactions.
+
+Genuine Transactions
+████████████████████████████████████████
+
+Fraudulent Transactions
+█
+
+Training a model directly on such data can produce misleading results.
+
+Therefore, the project uses:
+
+1️⃣ SMOTE
+
+SMOTE — Synthetic Minority Over-sampling Technique
+
+SMOTE generates synthetic examples for the minority class.
+
+Imbalanced Training Data
+          ↓
+        SMOTE
+          ↓
+Balanced Training Data
+          ↓
+    Model Training
+2️⃣ Class Weighting
+
+Classification models can also use:
+
+class_weight="balanced"
+
+to give greater importance to the minority fraud class.
+
+🔒 SMOTE is applied only to the training data to avoid data leakage.
+
+🤖 Machine Learning Models
+1. Logistic Regression
+
+Used as a baseline classification algorithm.
+
+Advantages
+Simple
+Fast
+Easy to interpret
+Supports probability prediction
+Suitable for binary classification
+2. Random Forest
+
+An ensemble learning algorithm consisting of multiple decision trees.
+
+Advantages
+Handles nonlinear relationships
+Captures complex feature interactions
+Robust classification performance
+Provides feature importance
+Suitable for structured transaction data
+📈 Model Evaluation
+
+The project evaluates models using multiple metrics.
+
+Metric	Purpose
+Accuracy	Overall correctly classified transactions
+Precision	Correctness of fraud predictions
+Recall	Ability to detect actual fraud
+F1-Score	Balance between precision and recall
+ROC-AUC	Ability to distinguish the two classes
+Confusion Matrix
+                    Predicted
+                 Genuine   Fraud
+              ┌─────────┬─────────┐
+Actual Genuine│   TN    │   FP    │
+              ├─────────┼─────────┤
+       Fraud  │   FN    │   TP    │
+              └─────────┴─────────┘
+
+Because fraud detection is an imbalanced classification problem, accuracy should not be considered by itself.
+
+🖥️ Streamlit Application
+
+The project includes an interactive Streamlit web application.
+
+🏠 Dashboard
+
+The dashboard displays:
+
+Total transactions
+Genuine transactions
+Fraudulent transactions
+Fraud percentage
+Model performance
+Transaction statistics
+Interactive charts
+🔍 Fraud Prediction
+
+Users can enter transaction feature values and click:
+
+🔍 Predict Transaction
+
+The application returns:
+
+┌─────────────────────────────────┐
+│      🚨 FRAUDULENT TRANSACTION  │
+├─────────────────────────────────┤
+│ Prediction: Fraudulent           │
+│                                 │
+│ Fraud Probability: 96.84%       │
+│ Genuine Probability: 3.16%      │
+└─────────────────────────────────┘
+
+or:
+
+┌─────────────────────────────────┐
+│       ✅ GENUINE TRANSACTION    │
+├─────────────────────────────────┤
+│ Prediction: Genuine              │
+│                                 │
+│ Fraud Probability: 2.31%       │
+│ Genuine Probability: 97.69%    │
+└─────────────────────────────────┘
+
+The displayed probability represents the model's predicted probability, not a guaranteed real-world fraud risk.
+
+📊 Analytics
+
+The application provides interactive visualizations such as:
+
+📊 Genuine vs Fraud distribution
+💰 Transaction amount distribution
+🚨 Fraud amount distribution
+⏱️ Transaction time analysis
+🔥 Correlation heatmap
+📈 Fraud trends
+🌳 Random Forest feature importance
+🤖 Model Performance
+
+The application provides a model comparison dashboard.
+
+Example structure:
+
+Model	Accuracy	Precision	Recall	F1-Score	ROC-AUC
+Logistic Regression	—	—	—	—	—
+Random Forest	—	—	—	—	—
+
+The values are generated dynamically from the trained models and are not hard-coded.
+
+🚀 Installation & Setup
+1️⃣ Clone the Repository
+git clone <YOUR-GITHUB-REPOSITORY-URL>
 cd credit-card-fraud-detection
-
+2️⃣ Create Virtual Environment
+Windows
 python -m venv venv
-```
 
-Activate the virtual environment:
+Activate:
 
-- **Windows:** `venv\Scripts\activate`
-- **macOS/Linux:** `source venv/bin/activate`
+venv\Scripts\activate
+Linux / macOS
+python3 -m venv venv
+source venv/bin/activate
+3️⃣ Install Dependencies
+python -m pip install -r requirements.txt
+🧪 Train the Model
 
-Install dependencies:
+Run:
 
-```bash
-pip install -r requirements.txt
-```
-
-Place `creditcard.csv` inside the `data/` folder (see **Dataset** above).
-
-## How to Run
-
-**1. Train the model** (run once, or whenever the dataset changes):
-
-```bash
 python src/train_model.py
-```
 
-This prints dataset statistics, the SMOTE before/after class distribution,
-model training progress, evaluation metrics for both models, and saves the
-winning model to `models/`.
+The training process will:
 
-**2. Launch the Streamlit application:**
+Load Dataset
+     ↓
+Preprocess Data
+     ↓
+Split Data
+     ↓
+Apply SMOTE
+     ↓
+Train Models
+     ↓
+Evaluate Models
+     ↓
+Compare Models
+     ↓
+Save Best Model
+▶️ Run the Streamlit Application
 
-```bash
+After training:
+
 streamlit run app/streamlit_app.py
-```
 
-Then open the local URL Streamlit prints (typically `http://localhost:8501`).
+The application will open in your browser.
 
-## Streamlit Application
+📸 Screenshots
 
-- **🏠 Dashboard** — headline metrics (total/genuine/fraud transactions,
-  fraud rate, model recall/F1/ROC-AUC) plus summary charts.
-- **🔍 Fraud Prediction** — enter (or auto-fill a random real sample of)
-  transaction details and get a live prediction with class probabilities.
-- **📊 Analytics** — deeper EDA: amount/time distributions, correlation
-  heatmap, fraud-rate trend over time, and feature importance.
-- **🤖 Model Performance** — full model comparison table, confusion
-  matrix, ROC curve, and Precision-Recall curve for the best model.
+Add screenshots of your application here after completing the project.
 
-## Screenshots
+🏠 Dashboard
+[ Add Dashboard Screenshot Here ]
+🔍 Fraud Prediction
+[ Add Prediction Screenshot Here ]
+📊 Analytics
+[ Add Analytics Screenshot Here ]
+🤖 Model Performance
+[ Add Model Performance Screenshot Here ]
+🔐 Security & Privacy
 
-*(Add screenshots here after running the app locally, e.g.
-`outputs/figures/dashboard.png`, `outputs/figures/prediction.png`.)*
+This project is intended for educational and demonstration purposes.
 
-## Results
+❌ Do not enter real credit-card numbers.
+❌ Do not use real customer financial information.
+✅ Use anonymized or publicly available datasets.
+✅ Treat model predictions as machine-learning outputs, not financial decisions.
+⚠️ Limitations
 
-Results are **not hard-coded** — every number in the app and in
-`outputs/reports/training_report.json` is computed live from whatever
-dataset is placed in `data/creditcard.csv`. Re-run `python
-src/train_model.py` to regenerate them. On the standard 284,807-row
-dataset, Random Forest with SMOTE-balanced training data was selected as
-the best model based on fraud-class F1-score.
+The current system has several limitations:
 
-## Future Enhancements
+Performance depends on the quality of the training dataset.
+Historical transaction patterns may not represent future fraud patterns.
+An anonymized dataset limits direct interpretation of individual features.
+Model probability is not necessarily a calibrated financial risk score.
+The application is an educational prototype rather than a production banking system.
+Real-world fraud detection would require continuous monitoring and model updates.
+🔮 Future Enhancements
 
-- Real-time transaction monitoring / streaming pipeline
-- REST API for programmatic predictions
-- Database integration for transaction history
-- Alert/notification system for flagged transactions
-- Additional ensemble models (XGBoost, LightGBM) for comparison
-- Decision-threshold optimization (beyond the default 0.5 cutoff)
-- Explainable AI: SHAP-based per-prediction explanations
-- Model monitoring / drift detection in production
-- Cloud deployment
-- Authentication and role-based access control
+Possible future improvements include:
 
-## Limitations
+⚡ Real-time transaction monitoring
+🌐 REST API integration
+🗄️ Database integration
+📧 Fraud alert notifications
+🧠 XGBoost / LightGBM comparison
+🔎 SHAP-based explainable AI
+📊 Threshold optimization
+☁️ Cloud deployment
+🔐 Authentication and authorization
+📈 Model monitoring
+🔄 Continuous model retraining
+🎓 Academic Information
+Project Type
 
-- Trained on a single historical (2013) dataset; may not generalize to
-  current fraud patterns without retraining on fresh data.
-- `V1`–`V28` are PCA-anonymised, so individual feature meaning isn't
-  interpretable in a business sense.
-- The prediction UI requires manually entering already-anonymised PCA
-  features, which is unrealistic for a real deployment (a production
-  system would compute these automatically upstream).
-- Not tuned for extreme low-latency, high-throughput production use.
-- This is not a substitute for a certified banking fraud-detection system.
+College Minor Project
 
-## Conclusion
+Domain
 
-This project demonstrates a complete, realistic ML workflow for a hard,
-imbalanced classification problem — from raw data validation through
-leak-free preprocessing, principled class-imbalance handling, multi-model
-comparison with fraud-appropriate metrics, and a usable interactive
-front-end — while staying scoped appropriately for a college minor
-project.
+Machine Learning / Artificial Intelligence / Data Analytics
 
-## Author
+Core Concepts
+Binary Classification
+        +
+Imbalanced Data
+        +
+SMOTE
+        +
+Random Forest
+        +
+Logistic Regression
+        +
+Data Visualization
+        +
+Streamlit
+📚 Learning Outcomes
 
-**[Your Name Here]**
-[Your Institution / Course Here]
-[Your Email Here]
+Through this project, the following concepts are demonstrated:
+
+Data preprocessing
+Exploratory Data Analysis
+Binary classification
+Imbalanced dataset handling
+SMOTE
+Logistic Regression
+Random Forest
+Model evaluation
+Confusion matrix
+Precision and Recall
+F1-score
+ROC-AUC
+Probability prediction
+Feature importance
+Streamlit application development
+Git/GitHub project management
+👨‍💻 Author
+
+Sri Harish
+
+🎓 B.E. Computer Science Engineering
+💻 Interested in Data Analytics, Machine Learning & Software Development
+
+Connect
+Ph.No: +91-9489231147
+LinkedIn: Add your LinkedIn profile
+
+⭐ Support
+If you find this project useful, consider giving the repository a ⭐ on GitHub📜 License
+
+This project is intended for educational purposes. Add an appropriate open-source license if you plan to distribute the source code publicly.
