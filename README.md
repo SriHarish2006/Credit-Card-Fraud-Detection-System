@@ -120,7 +120,9 @@ A user-friendly **Streamlit dashboard** provides transaction predictions, fraud 
                  │ Prediction          │
                  └─────────────────────┘
 
-📂 Project Structure
+
+#📂 Project Structure
+
 credit-card-fraud-detection/
 │
 ├── 📁 data/
@@ -153,7 +155,9 @@ credit-card-fraud-detection/
 ├── 📄 README.md
 ├── 📄 .gitignore
 └── 📄 LICENSE
-🛠️ Tech Stack
+
+
+#🛠️ Tech Stack
 Programming Language
 
 🐍 Python
@@ -198,7 +202,8 @@ The dataset contains a strong class imbalance, making it suitable for demonstrat
 
 ⚠️ The project should be used with anonymized/educational transaction data. Never enter real credit-card numbers or sensitive financial information.
 
-⚖️ Handling Class Imbalance
+
+#⚖️ Handling Class Imbalance
 
 One of the main challenges in this project is class imbalance.
 
@@ -237,7 +242,7 @@ to give greater importance to the minority fraud class.
 
 🔒 SMOTE is applied only to the training data to avoid data leakage.
 
-🤖 Machine Learning Models
+#🤖 Machine Learning Models
 1. Logistic Regression
 
 Used as a baseline classification algorithm.
@@ -279,11 +284,11 @@ Actual Genuine│   TN    │   FP    │
 
 Because fraud detection is an imbalanced classification problem, accuracy should not be considered by itself.
 
-🖥️ Streamlit Application
+#🖥️ Streamlit Application
 
 The project includes an interactive Streamlit web application.
 
-🏠 Dashboard
+#🏠 Dashboard
 
 The dashboard displays:
 
@@ -339,7 +344,7 @@ The application provides interactive visualizations such as:
 
 The application provides a model comparison dashboard.
 
-Example structure:
+#Example structure:
 
 Model	Accuracy	Precision	Recall	F1-Score	ROC-AUC
 Logistic Regression	—	—	—	—	—
@@ -424,7 +429,8 @@ An anonymized dataset limits direct interpretation of individual features.
 Model probability is not necessarily a calibrated financial risk score.
 The application is an educational prototype rather than a production banking system.
 Real-world fraud detection would require continuous monitoring and model updates.
-🔮 Future Enhancements
+
+#🔮 Future Enhancements
 
 Possible future improvements include:
 
@@ -482,7 +488,8 @@ Probability prediction
 Feature importance
 Streamlit application development
 Git/GitHub project management
-👨‍💻 Author
+
+#👨‍💻 Author
 
 Sri Harish
 
@@ -493,7 +500,7 @@ Connect
 Ph.No: +91-9489231147
 LinkedIn: Add your LinkedIn profile
 
-⭐ Support
+#⭐ Support
 If you find this project useful, consider giving the repository a ⭐ on GitHub📜 License
 
 This project is intended for educational purposes. Add an appropriate open-source license if you plan to distribute the source code publicly.
